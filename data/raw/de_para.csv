@@ -1,0 +1,240 @@
+DE_EXAME,DE_ANALITO,CD_UNIDADE,PARA_ANALITO
+Peptideo Natriuretico Tipo B (Bnp),BNP,pg/mL,B Peptide
+SĂłdio,SĂłdio,mEq/L,Sodium
+Creatinina,Creatinina,,Creatinin
+Troponina,Troponina,,Troponin
+Creatinofosfoquinase - CK-MB,CK-MB,,Creatine Kinase MB
+D. Dimeros(Dimeros De Fibrina),Dimeros D,,D Dimer
+Creatinofosfoquinase Cpk-Ck,CK,U/L,CPK
+UrĂŠia,UrĂŠia,mg/dL,Urea
+PotĂĄssio,PotĂĄssio,,Potassium
+Hemograma,Hemoglobina,,Haemoglobin
+Hemograma,VCM,,Mean C Volume
+Hemograma,LeucĂłcitos,/mm3,Leukocytes
+Hemograma,NeutrĂłfilos,/mm3,Neutrofils
+Hemograma,EosinĂłfilos,/mm3,Eosinofils
+Hemograma,BasĂłfilos,/mm3,Basofils
+Hemograma,LinfĂłcitos,/mm3,Lymphocytes
+Hemograma,MonĂłcitos,/mm3,Monocytes
+Hemograma,Plaquetas,/mm3,Platelets
+Hemograma,EritrĂłcitos,,Erytrocytes
+Hemograma,HematĂłcrito,,Hematocrit
+Hemograma,HCM,,Mean C Haemoglobin
+Hemograma,CHCM,,CHCM
+Hemograma,RDW,,RDW
+Hemograma,NeutrĂłfilos (%),,Neutrofils (%)
+Hemograma,EosinĂłfilos (%),,Eosinofils (%)
+Hemograma,BasĂłfilos (%),,Basofils (%)
+Hemograma,LinfĂłcitos (%),,Lymphocytes (%)
+Hemograma,MonĂłcitos (%),,Monocytes (%)
+Hemograma,Volume plaquetĂĄrio mĂŠdio,,Platelet Volume
+Desidrogenase LĂĄtica (DHL/L),DHL,U/L,DHL
+Bilirrubinas Total E Fracoes,Bilirrubina Direta,,Direct Bilirrubin
+Bilirrubinas Total E Fracoes,Bilirrubina Total,,Total Bilirrubin
+Bilirrubinas Total E Fracoes,Bilirrubina Indireta,,Indirect Bilirrubin
+Tgp,ALT (TGP),U/L,ALT
+Tgo,AST (TGO),U/L,AST
+Magnesio,MagnĂŠsio,,Magnesium
+Gasometria Venosa,pH venoso,,Venous pH
+Gasometria Venosa,pO2 venoso,mmHg,Venous pO2
+Gasometria Venosa,pCO2 venoso,mmHg,Venous pCO2
+Gasometria Venosa,HCO3 venoso,mmol/L,Venous HCO3
+Gasometria Venosa,BE venoso,,Venous BE
+Gasometria Venosa,Sat O2 venoso,%,Venous O2 Sat
+Tempo Tromb.Parcial Ativada,TTPA,,TTPA
+Tempo Tromb.Parcial Ativada,TTPA - Paciente/Normal,,TTPA
+Tempo Tromb.Parcial Ativada,TTPA-Normal do dia,,TTPA
+Tempo E Ativid. Protrombina (Tp),TP/INR,,TP_inr
+Tempo E Ativid. Protrombina (Tp),Tempo de Protrombina,,TP_inr
+Fosfatase Alcalina,Fosfatase Alcalina,U/L,Fosfatase
+Gama Gt,Gama-GT,U/L,GamaGT
+Tsh - Hormonio Tiroestimulante,TSH,,TSH
+Lactato - Kit Urg,Lactato,,Lactate
+FĂłsforo,FĂłsforo,,Phosphorus
+CĂĄlcio IonizĂĄvel,Calcio Ionizavel,,Ion Calcium
+PSA TOTAL - AntĂ­geno ProstĂĄtico EspecĂ­fico Total ,PSA Total,,PSA
+Urina Tipo I - Jato Medio,pH,,Urine pH
+Urina Tipo I - Jato Medio,Densidade,,Urine Density
+Urina Tipo I - Jato Medio,ProteĂ­nas,,"Proteins, Urine"
+Urina Tipo I - Jato Medio,Glicose,,Glicose
+Urina Tipo I - Jato Medio,C.CetĂ´nicos,,Ketonic Bodies
+Urina Tipo I - Jato Medio,Bilirrubina,,Urine Bilirrubin
+Urina Tipo I - Jato Medio,UrobilinogĂŞnio,,Urinebilinogen
+Urina Tipo I - Jato Medio,LeucĂłcitos,,Leukocytes Urine
+Urina Tipo I - Jato Medio,Nitrito,,Nitrites Urine
+PSA LIVRE - AntĂ­geno ProstĂĄtico EspecĂ­fico Livre,PSA Livre/Total,,PSA
+PSA LIVRE - AntĂ­geno ProstĂĄtico EspecĂ­fico Livre,PSA Livre,,PSA
+Hemoglobina Glicada,Hemoglobina Glicada,,Hemoglobin A1C
+Colesterol Total e FraĂ§Ăľes,LDL Colesterol,mg/dL,LDL
+Colesterol - Fracao HDL,Hdl-Colesterol,mg/dL,HDL
+Colesterol Total - URG,Colesterol total,mg/dL,Total Cholesterol
+TriglicĂŠrides,TriglicĂŠrides,mg/dL,Triglicirides
+Colesterol - FraĂ§ĂŁo VLDL,V-Colesterol,mg/dL,Cholesterol Volume
+Gasometria Arterial,pH arterial,,Arterial pH
+Gasometria Arterial,pO2 arterial,mmHg,Arterial pO2
+Gasometria Arterial,pCO2 arterial,mmHg,Arterial pCO2
+Gasometria Arterial,HCO3 arterial,mmol/L,Arterial pHCO3
+Gasometria Arterial,BE arterial,,Arterial BE
+Gasometria Arterial,Sat O2 arterial,%,Arterial O2 Sat
+Albumina,Albumina,,Albumin
+Lipase (urgĂŞncia),Lipase,U/L,Lipase
+Cloro,Cloro,mEq/L,Chlorine
+Hemograma,Bastonetes,/mm3,Rod Cells
+Hemograma,Segmentados,/mm3,Segmented
+Hemograma,Bastonetes (%),,Rod Cells (%)
+Hemograma,Segmentados (%),,Segmented (%)
+Hemograma,PromielĂłcitos,/mm3,Promyelocytes
+Hemograma,MielĂłcitos,/mm3,Myelocytes
+Hemograma,MetamielĂłcitos,/mm3,Metamyelocytes
+Hemograma,PromielĂłcitos (%),,Promyelocytes (%)
+Hemograma,MielĂłcitos (%),,Miyelocytes (%)
+Hemograma,MetamielĂłcitos (%),,Metamyelocytes (%)
+Fator Reumatoide (Latex),Fator ReumatĂłide,UI/mL,Rheumatoid Factor
+Complemento C3,C3,mg/dL,C3
+Complemento C4,C4,mg/dL,C4
+Prolactina,Prolactina,,Prolactin
+Chumbo,Chumbo,,Lead
+Ferro Serico,Ferro,microg/dL,Iron
+Cortisol Basal,Cortisol,,Cortisol
+Estradiol,Estradiol,,Estradiol
+Acido FĂłlico,Ăcido fĂłlico,ng/mL,Folic Acid
+Insulina,Insulina,mU/L,Insulin
+Insulina,HOMA-IR,,HOMA_IR
+Insulina,IMC - Ăndice de massa corporal,,IMC
+Zinco,Zinco,,Zinc
+AlumĂ­nio,AlumĂ­nio,microg/L,Aluminum
+Testosterona,Testosterona,ng/dL,Testosterone
+Globulina Ligadora HormĂ´nio Sexual,SHBG,mmol/L,SHBG
+Testosterona Livre,Testosterona livre,,Free Testosterone
+Eletroforese de ProteĂ­nas,Eletro - Albumina,,Electro Albumin
+Eletroforese de ProteĂ­nas,Eletro - Alfa 1 glob,,Electro Alpha 1
+Eletroforese de ProteĂ­nas,Eletro - Alfa 2 glob,,Electro Alpha 2
+Eletroforese de ProteĂ­nas,Eletro - Beta 1 glob,,Electro Beta 1
+Eletroforese de ProteĂ­nas,Eletro - Beta 2 glob,,Electro Beta 2
+Eletroforese de ProteĂ­nas,Eletro - Gama glob,,Electro Gama
+Eletroforese de ProteĂ­nas,Eletro - Comp Monocl,,Electro Mono
+Cobre,Cobre,microg/dL,Cooper
+Complemento/O Hemol.Total/Ch50,Complemento Total,U/mL,Total Complement
+SSA/RO Anticorpos,Ro/SS-A,,RO_ssA
+SSB/LA Anticorpos,La/SS-B - ensaio imunoenzimĂĄtico,,LA_ssB
+ProteĂ­nas Totais e FraĂ§Ăľes - PTF,Globulinas,,Globulins
+ProteĂ­nas Totais e FraĂ§Ăľes - PTF,Albumina/Globulina,,Albumin
+Vitamina B1 (Tiamina),Vitamina B1,,B1 Vitamin
+HomocisteĂ­na,HomocisteĂ­na,,Haemocistein
+Colesterol - FraĂ§ĂŁo LDL,VLDL-Colesterol,mg/dL,VLDL
+Glicemia de Jejum,Glicose,mg/dL,Glicose
+T3 - Tri Iodotironina,T3,ng/dL,T3
+HemossedimentaĂ§ĂŁo(Vhs) 1.Hora,VHS,mm,VHS
+Hemograma,FraĂ§ĂŁo Imatura de Plaquetas,,Imature Fraction Plat
+Testosterona Livre,SHBG,nmol/L,SHBG
+CĂĄlcio Ionizado,CĂĄlcio Ionizado,,Ion Calcium
+Progesterona,Progesterona,ng/dL,Progesterone
+Paratormonio - N-Intac,PTH,pg/mL,PTH
+Acido FĂłlico,Ăcido fĂłlico,,Folic Acid
+Gonadotrofina CoriĂ´nica (B - Hcg) (Rie Ou Eie),HCG,UI/L,HCG
+T4 - Tetraiodotironina,T4,,T4
+CĂĄlcio Total,CĂĄlcio,,Calcium
+Aldolase,Aldolase,,Aldolase
+Hepat.B Anti-Hbc(Hbv)Sorol.Igm,Anti-HBc,,anti_hbc_igm
+Hepat.B Anti-Hbc(Hbv)Sorol.Igg,Anti-HBc Total,,anti_hbc_igg
+Sorologia Para Sifilis Fta/Abs,SĂ­filis - Elisa,,sifilis_elisa
+Hepatite A (Hav-Vha)-Sorol.Igg,Anti-VHA Total,,anti_vha
+Frutosamina,Frutosamina,micromol/L,Frutosamine
+HematĂłcrito - Kit Urg,Hematocrito,,Hematocrit
+Cloro - Kit Urg,Cloro,,Chlorine
+SĂłdio - Kit Urg,SĂłdio,,Sodium
+Imunoglobulina G,IgG,,IGG
+Imunoglobulina A,IgA,,IGA
+Amonia Serica,AmĂ´nia,micromol/L,Amonium
+Complemento C1,C1q,mg/dL,C1Q
+Haptoglobina,Haptoglobina,mg/dL,Haptoglobin
+Tempo De Trombina (Tt),Trombina,,TTPA
+AntĂ­geno CarcinoembriogĂŞnico (CEA),CEA,,CEA
+Hemograma,Blastos,/mm3,Blasts
+Hemograma,Blastos (%),,Blasts (%)
+CA 125,CA 125,,CA125
+CA 15-3,CA 15-3,,CA15_3
+CA 19-9,CA 19-9,U/mL,CA19_9
+S-DHEA,DHEA-S,microg/dL,DHEA_S
+Androstenediona,Androstenediona,ng/dL,Androstenedione
+Apo LipoproteĂ­na B,ApolipoproteĂ­na B,mg/dL,Apolipoprotein B
+Dehidrotestosterona (DHT),Dehidrotestosterona,ng/dL,Dehidrotestosterone
+T3 Livre,T3 livre,,T3
+Prolactina,Prolactina,microg/L,Prolactin
+Hemograma,Ăndice de Green & King,,RDW
+Tireoglobulina Serica,Tiroglobulina,ng/mL,Tiroglobulin
+Complemento C2,C2,%,C2
+Complemento C5,C5,,C5
+Imunoeletroforese,ProteĂ­nas SĂŠricas,,Seric Protein
+Beta 2 Microglobulina (soro),Beta 2 Microglobulin,,Beta 2
+ProteĂ­na de Bence Jones,Bence-Jones,,Bence Jones
+Imunoglobulina M,IgM,,IGM
+Imunoglobulina E,IgE,,IGE
+Mioglobina (Sangue),Mioglobina,ng/mL,Myoglobin
+Sirolimus (Rapamicina),Rapamicina,,Rapamicin
+Prograf Em Tempos,Tacrolimus,,Tacrolimus
+Metanefrina Urinaria,Normetnefrina,,Normetnefrin
+Metanefrina Urinaria,Metanefrina total,,Total Metanefrin
+Metanefrina Urinaria,Metanefrina,,Metanefrin
+Cortisol UrinĂĄrio,Cortisol Livre,,Cortisol
+Cortisol UrinĂĄrio,Cortisol Livre L,,Cortisol
+Cortisol UrinĂĄrio,Cortisona Livre L,,Cortisone
+Cortisol UrinĂĄrio,Cortisona Livre,,Cortisone
+PSA LIVRE - AntĂ­geno ProstĂĄtico EspecĂ­fico Livre,PSA Total,ng/mL,PSA
+Horm.Adrenocorticotrofico/Acth,ACTH,pg/mL,ACTH
+IGF1 Somatomedina,IGF-1,ng/mL,IGFBP3
+Hemograma automatizado prĂŠ-QT,Hemoglobina Corpuscular MĂŠdia,,Mean C Haemoglobin
+CA 125,CA 125,U/mL,CA125
+CA 15-3,CA 15-3,U/mL,CA15_3
+Enolase Neuronio Especif.(Nse),Enolase Neuronio-EspecĂ­fica,,Enolase
+Gastrina,Gastrina,,Gastrine
+Cromogranina,Cromogranina A,ng/mL,Cromogranin A
+Vitamina K,Vitamina K,pg/mL,K Vitamin
+Oxaluria na Urina,Oxalato,,Oxalate
+Citrato Na Urina,Citrato,,Citrate
+CA 19-9,CA 19-9,,CA19_9
+Lipoproteina A (Lpa),Lipoproteina Lp(a),nmol/L,Lipoprotein
+Dosagem ProteĂ­na S,ProteĂ­na S Total,%,S Protein
+Dosagem ProteĂ­na S,ProteĂ­na S Livre,%,Free S Protein
+ProteĂ­na C Funcional,Proteina C,%,Cprotein
+Beta 2 glicoproteina 1 autoanticorpos,Beta 2 Glic. I,,Beta 2
+Apolipoproteina A,ApolipoproteĂ­na A-1,mg/dL,Apolipoprotein A
+Fosfatase Ăcida Total,Fosfatase Ăcida - Total,,Fosfatase
+17 Alfa Hidroxiprogesterona,17-Alfa-Hidroxiprog.,ng/dL,Alpha 17
+Tireoglobulina Serica,Tiroglobulina,,Tiroglobulin
+DHEA - Dehidroepiandrosterona,DHA,ng/dL,DHEA_S
+Cromo,Cromo,,Cromium
+Peptideo C,PeptĂ­dio C,,C Peptide
+CA 72-4,CA 72-4,,CA72_4
+LinfĂłcitos T E B (Cd3 / Cd19),Linfocitos T,/mm3,T Lymphocytes
+LinfĂłcitos T E B (Cd3 / Cd19),Linfocitos B,/mm3,B Lymphocytes
+Eletroforese de Hemoglobina,Hemoglobina A,,A Haemoglobin
+Eletroforese de Hemoglobina,Hemoglobina A2,,A2 Haemoglobin
+Eletroforese de Hemoglobina,Hemoglobina F,,F Haemoglobin
+Lamotrigina,Lamotrigina,,Lamotrigin
+AntĂ­geno CarcinoembriogĂŞnico (CEA),CEA,microg/L,CEA
+Hemograma,Plaquetas,,Platelets
+HLA B27,HLA-B27,,HLA_B27
+Hemograma,PlasmĂłticos,/mm3,Plasmotics
+Hemograma,PlasmĂłcitos (%),,Plasmotics (%)
+Peptideo Citrulinado,CCP,,CCP
+Linfocitos Cd4 / Cd8,LinfĂłcitos CD4+,/mm3,CD4
+Linfocitos Cd4 / Cd8,LinfĂłcitos CD8+,/mm3,CD8
+Linfocitos Cd4 / Cd8,LinfĂłcitos CD-3,/mm3,CD3
+HomocisteĂ­na,HomocisteĂ­na,micromol/L,Homocistein
+Eritropoietina,Eritropoietina (EPO),,EPO
+Cetonuria - Urina,Corpos cetĂ´nicos,,Ketonic Bodies
+Interligadores C - Terminais-Ctx,CTX,,CTX
+Igfbp,IGFBP3,ng/mL,IGFBP3
+Testosterona Livre,Testosterona livre,pmol/L,Free Testosterone
+Renina,Renina,,Renin
+Aldosterona,Aldosterona,,Aldosterone
+Colesterol Total e FraĂ§Ăľes,LDL Colesterol,,LDL
+Colesterol - FraĂ§ĂŁo LDL,VLDL-Colesterol,,VLDL
+PSA LIVRE - AntĂ­geno ProstĂĄtico EspecĂ­fico Livre,PSA Livre,ng/mL,PSA
+Glicose - 6 - Fosfato Desidrogenase,Glicose-6-Fosfato Desidrogenase (G6PD),,Glicose6Phosphate
+T3 Reverso,T3 Reverso,ng/dL,T3
+Tsh - Hormonio Tiroestimulante,TSH,microU/mL,TSH
+Ciclosporina ,Ciclosporina,ng/mL,Ciclosporin
+Linfocitos Nat Killer Nk Cd56,LinfĂłcitos Natural killer (CD56/16+,,CD56
+Hemograma,HCM,pg,Mean C Haemoglobin
