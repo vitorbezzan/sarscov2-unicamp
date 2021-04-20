@@ -16,6 +16,7 @@ class IdentityTransformer(RegressorMixin):
     """
     Returns same data as input
     """
+
     def __init__(self, strategy: str = "none"):
         self.strategy = strategy
 
@@ -41,7 +42,9 @@ train, test = train_test_split(data, test_size=0.15, random_state=123)
 train = train[pd.notna(train["TI"])]
 test = test[pd.notna(test["TI"])]
 
-treat_anomalous_train = train[(train["TI"] > 0) & (train["target_internacao"] == 0)].index
+treat_anomalous_train = train[
+    (train["TI"] > 0) & (train["target_internacao"] == 0)
+].index
 treat_anomalous_test = test[(test["TI"] > 0) & (test["target_internacao"] == 0)].index
 
 train.loc[treat_anomalous_train, "TI"] = 0
@@ -52,7 +55,7 @@ X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["TI"]
 
 steps = [
     ("input_values", SimpleImputer(strategy="median")),
-    ("data", IdentityTransformer())
+    ("data", IdentityTransformer()),
 ]
 
 pipeline = Pipeline(steps).fit(X_train, y_train)

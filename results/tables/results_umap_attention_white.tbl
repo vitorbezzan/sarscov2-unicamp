@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  Platelets &  Mean platelet volume  &  Lymphocytes &  Leukocytes &  Basophils &  Eosinophils &  Monocytes \\
+Cluster &            &                        &              &             &            &              &            \\
+\midrule
+0       &  -0.445631 &               0.331228 &     0.063713 &   -0.537869 &   0.016237 &    -0.305755 &   0.858424 \\
+1       &  -0.734901 &               0.263530 &    -0.049911 &   -0.741464 &  -0.205530 &    -0.516632 &   0.406545 \\
+t-test  &   0.061341 &               0.399595 &     0.331979 &    0.150230 &   0.156617 &     0.056762 &   0.088217 \\
+ks-test &   0.034455 &               0.689187 &     0.272100 &    0.564482 &   0.284728 &     0.030776 &   0.105875 \\
+\bottomrule
+\end{tabular}

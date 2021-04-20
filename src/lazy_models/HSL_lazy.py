@@ -16,6 +16,7 @@ class IdentityTransformer(RegressorMixin):
     """
     Returns same data as input
     """
+
     def __init__(self, strategy: str = "none"):
         self.strategy = strategy
 
@@ -38,12 +39,16 @@ class IdentityTransformer(RegressorMixin):
 data = pd.read_parquet("./data/primary/hsl.parquet")
 train, test = train_test_split(data, test_size=0.15, random_state=123)
 
-X_train, y_train = train.drop(["target_internacao", "TI"], axis=1), train["target_internacao"]
-X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["target_internacao"]
+X_train, y_train = (
+    train.drop(["target_internacao", "TI"], axis=1),
+    train["target_internacao"],
+)
+X_test, y_test = (
+    test.drop(["target_internacao", "TI"], axis=1),
+    test["target_internacao"],
+)
 
-steps = [
-    ("data", IdentityTransformer())
-]
+steps = [("data", IdentityTransformer())]
 
 pipeline = Pipeline(steps).fit(X_train, y_train)
 

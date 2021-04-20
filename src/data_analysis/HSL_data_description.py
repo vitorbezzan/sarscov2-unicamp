@@ -26,25 +26,39 @@ stats.loc["KS Statistic"] = np.nan
 
 for column in X_train.columns:
     stats.loc["Empty", column] = pd.isna(X_train[column]).sum()
-    stats.loc["Coverage", column] = stats.loc["count", column] / (stats.loc["Empty", column] + stats.loc["count", column])
+    stats.loc["Coverage", column] = stats.loc["count", column] / (
+        stats.loc["Empty", column] + stats.loc["count", column]
+    )
 
     try:
-        stats.loc["KS Statistic", column] = ks_2samp(data[column][data["target_internacao"] == 1].dropna(),
-                                                     data[column][data["target_internacao"] == 0].dropna())[1]
+        stats.loc["KS Statistic", column] = ks_2samp(
+            data[column][data["target_internacao"] == 1].dropna(),
+            data[column][data["target_internacao"] == 0].dropna(),
+        )[1]
     except:
         stats.loc["KS Statistic", column] = np.nan
 
     sns.set_style("ticks")
     sns.set(font="Arial")
-    sns.distplot(data[column][data["target_internacao"] == 1], color="skyblue", label="Hospitalar Care")
-    sns.distplot(data[column][data["target_internacao"] == 0], color="red", label="Non-Hospitalar Care")
+    sns.distplot(
+        data[column][data["target_internacao"] == 1],
+        color="skyblue",
+        label="Hospitalar Care",
+    )
+    sns.distplot(
+        data[column][data["target_internacao"] == 0],
+        color="red",
+        label="Non-Hospitalar Care",
+    )
     plt.legend()
     plt.xlabel(column)
     plt.ylabel("Histogram and Adjusted Kernel")
     plt.savefig("./results/histograms/" + column + ".png")
     plt.close()
 
-table = stats.loc[:,stats.loc["Coverage"].sort_values(ascending=False)[:30].index].T.round(decimals=2)
+table = stats.loc[
+    :, stats.loc["Coverage"].sort_values(ascending=False)[:30].index
+].T.round(decimals=2)
 table["IQR"] = table["75%"] - table["25%"]
 table = table.drop(["count", "Empty", "75%", "25%", "50%"], axis=1)
 table = table[["mean", "std", "min", "IQR", "max", "Coverage", "KS Statistic"]]
@@ -54,8 +68,16 @@ with open("./results/tables/description.tbl", "w") as file:
     file.write(table.to_latex())
     file.close()
 
-selected = data[["Leucocytes", "Lymphocytes", "Monocites", "Neutrophils", "target_internacao"]]
-selected.columns = ["Leukocytes", "Lymphocytes", "Monocytes", "Neutrofils", "Special Care"]
+selected = data[
+    ["Leucocytes", "Lymphocytes", "Monocites", "Neutrophils", "target_internacao"]
+]
+selected.columns = [
+    "Leukocytes",
+    "Lymphocytes",
+    "Monocytes",
+    "Neutrofils",
+    "Special Care",
+]
 sns.set_style("ticks")
 sns.set(font="Arial")
 g = sns.pairplot(selected, hue="Special Care", corner=False)

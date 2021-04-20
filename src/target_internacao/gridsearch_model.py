@@ -22,28 +22,41 @@ from imblearn.combine import SMOTEENN
 data = pd.read_parquet("./data/primary/hsl.parquet")
 train, test = train_test_split(data, test_size=0.15, random_state=123)
 
-X_train, y_train = train.drop(["target_internacao", "TI"], axis=1), train["target_internacao"]
-X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["target_internacao"]
+X_train, y_train = (
+    train.drop(["target_internacao", "TI"], axis=1),
+    train["target_internacao"],
+)
+X_test, y_test = (
+    test.drop(["target_internacao", "TI"], axis=1),
+    test["target_internacao"],
+)
 
 steps = [
     ("input_values", SimpleImputer(strategy="median")),
     ("balance_targets", SMOTEENN(random_state=123)),
-    ("model_xgb", xgb.XGBClassifier(objective="binary:logistic",))
+    (
+        "model_xgb",
+        xgb.XGBClassifier(
+            objective="binary:logistic",
+        ),
+    ),
 ]
 
-grid = {"model_xgb__n_estimators": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150, 200, 250],
-        "model_xgb__max_depth": [3, 4, 5, 6]}
+grid = {
+    "model_xgb__n_estimators": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150, 200, 250],
+    "model_xgb__max_depth": [3, 4, 5, 6],
+}
 
 pipeline = Pipeline(steps)
 model = GridSearchCV(pipeline, grid, cv=5, n_jobs=-1, verbose=2).fit(X_train, y_train)
 
 new_steps = [
     ("input_values", model.best_estimator_[0]),
-    ("model_xgb", model.best_estimator_[-1])
+    ("model_xgb", model.best_estimator_[-1]),
 ]
 
 final_model = skPipeline(new_steps)
-roc = roc_auc_score(y_test, final_model.predict_proba(X_test)[:,1])
+roc = roc_auc_score(y_test, final_model.predict_proba(X_test)[:, 1])
 
 sns.set_style("ticks")
 sns.set(font="Arial")
@@ -70,7 +83,9 @@ results["Model Score (std)"] = model.cv_results_["std_test_score"].data
 
 sns.set_style("ticks")
 sns.set(font="Arial")
-ax = sns.lineplot(x="# Estimators", y="Model Score", hue="Max Depth", markers=True, data=results)
+ax = sns.lineplot(
+    x="# Estimators", y="Model Score", hue="Max Depth", markers=True, data=results
+)
 plt.xlabel("Number of Estimators")
 plt.ylabel("Validation Score (5 fold-validation)")
 plt.title("Validation Scores (Grid-search Hyperparameters)")

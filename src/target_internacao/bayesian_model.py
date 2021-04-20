@@ -27,19 +27,25 @@ from scipy import stats
 data = pd.read_parquet("./data/primary/hsl.parquet")
 train, test = train_test_split(data, test_size=0.15, random_state=123)
 
-X_train, y_train = train.drop(["target_internacao", "TI"], axis=1), train["target_internacao"]
-X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["target_internacao"]
+X_train, y_train = (
+    train.drop(["target_internacao", "TI"], axis=1),
+    train["target_internacao"],
+)
+X_test, y_test = (
+    test.drop(["target_internacao", "TI"], axis=1),
+    test["target_internacao"],
+)
 
 steps = [
     ("input_values", SimpleImputer(strategy="median")),
     ("balance_targets", SMOTEENN(random_state=123)),
-    ("model_xgb", BayesianxgClassifier(CV=4))
+    ("model_xgb", BayesianxgClassifier(CV=4)),
 ]
 
 pipeline = Pipeline(steps)
 model = pipeline.fit(X_train, y_train)
 
-roc = roc_auc_score(y_test, model.predict(X_test)[:,1])
+roc = roc_auc_score(y_test, model.predict(X_test)[:, 1])
 
 sns.set_style("ticks")
 sns.set(font="Arial")
@@ -53,7 +59,9 @@ plot_precision_recall_curve(y_test, model.predict(X_test))
 plt.savefig("./results/xgb_results/target_internacao/precision_recall_bayes_TI.png")
 plt.close()
 
-explainer = shap.KernelExplainer(pipeline.predict, shap.sample(X_train, 2000), link="logit")
+explainer = shap.KernelExplainer(
+    pipeline.predict, shap.sample(X_train, 2000), link="logit"
+)
 shap_values = explainer.shap_values(shap.sample(X_test, 100), nsamples=100)
 
 sns.set_style("ticks")

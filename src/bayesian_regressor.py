@@ -12,7 +12,6 @@ from sklearn.model_selection import cross_val_score
 
 
 class BayesianxgRegressor(BaseEstimator):
-
     def __init__(self, CV: int = 5, trial_number: int = 40):
 
         super().__init__()
@@ -36,9 +35,20 @@ class BayesianxgRegressor(BaseEstimator):
                 """
                 Evaluates CV function helper
                 """
-                model = XGBRegressor(learning_rate=eta, n_estimators=n_estimators, subsample=subsample,
-                                                  max_depth=max_depth)
-                score = cross_val_score(model, X, y, scoring="neg_mean_squared_error", cv=self.__CV, n_jobs=-1)
+                model = XGBRegressor(
+                    learning_rate=eta,
+                    n_estimators=n_estimators,
+                    subsample=subsample,
+                    max_depth=max_depth,
+                )
+                score = cross_val_score(
+                    model,
+                    X,
+                    y,
+                    scoring="neg_mean_squared_error",
+                    cv=self.__CV,
+                    n_jobs=-1,
+                )
                 return score.mean()
 
             opt_param = [
@@ -69,10 +79,7 @@ class BayesianxgRegressor(BaseEstimator):
             ]
 
             opt_eval = lambda p: evaluate(
-                p["eta"],
-                p["max_depth"],
-                p["subsample"],
-                p["n_estimators"]
+                p["eta"], p["max_depth"], p["subsample"], p["n_estimators"]
             )
             best, value, _, _ = optimize(
                 parameters=opt_param,
@@ -85,13 +92,15 @@ class BayesianxgRegressor(BaseEstimator):
                 "eta": best["eta"],
                 "max_depth": best["max_depth"],
                 "subsample": best["subsample"],
-                "n_estimators": best["n_estimators"]
+                "n_estimators": best["n_estimators"],
             }
 
-            self.__model = XGBRegressor(learning_rate=self.__best_params["eta"],
-                                                     n_estimators=self.__best_params["n_estimators"],
-                                                     subsample=self.__best_params["subsample"],
-                                                     max_depth=self.__best_params["max_depth"])
+            self.__model = XGBRegressor(
+                learning_rate=self.__best_params["eta"],
+                n_estimators=self.__best_params["n_estimators"],
+                subsample=self.__best_params["subsample"],
+                max_depth=self.__best_params["max_depth"],
+            )
             self.__model.fit(X, y)
 
             self.fitted = True

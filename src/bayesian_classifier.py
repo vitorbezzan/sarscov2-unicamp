@@ -11,7 +11,6 @@ from sklearn.base import BaseEstimator
 
 
 class BayesianxgClassifier(BaseEstimator):
-
     def __init__(self, CV: int = 5, trial_number: int = 40):
 
         super().__init__()
@@ -172,4 +171,3 @@ class BayesianxgClassifier(BaseEstimator):
             return -log_loss(y, self.__model.predict(xgb.DMatrix(X)))
 
         raise RuntimeError("Model not fitted")
-

@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  Hematocrit &  Hemoglobin &  Red blood Cells &  Mean corpuscular hemoglobin concentration (MCHC) &  Mean corpuscular hemoglobin (MCH) &  Mean corpuscular volume (MCV) &  Red blood cell distribution width (RDW) \\
+Cluster &             &             &                  &                                                   &                                    &                                &                                          \\
+\midrule
+0       &    0.192373 &    0.228284 &         0.124672 &                                          0.187246 &                           0.152039 &                       0.078920 &                                -0.227019 \\
+1       &    0.276826 &    0.302162 &         0.261730 &                                          0.166864 &                           0.034623 &                      -0.037691 &                                -0.194673 \\
+t-test  &    0.638796 &    0.619572 &         0.701361 &                                          0.466539 &                           0.285301 &                       0.295333 &                                 0.562766 \\
+ks-test &    0.440488 &    0.675420 &         0.788581 &                                          0.458707 &                           0.284728 &                       0.348343 &                                 0.863925 \\
+\bottomrule
+\end{tabular}

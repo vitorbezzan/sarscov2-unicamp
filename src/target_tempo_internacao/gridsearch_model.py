@@ -25,11 +25,14 @@ from scipy.stats import spearmanr, kendalltau
 
 from fancyimpute import SoftImpute
 
+
 class SoftImputeDf:
     def fit(self, X, y):
         return self
+
     def transform(self, X):
         return SoftImpute().fit_transform(X)
+
 
 data = pd.read_parquet("./data/primary/hsl.parquet")
 train, test = train_test_split(data, test_size=0.15, random_state=123)
@@ -37,7 +40,9 @@ train, test = train_test_split(data, test_size=0.15, random_state=123)
 train = train[pd.notna(train["TI"])]
 test = test[pd.notna(test["TI"])]
 
-treat_anomalous_train = train[(train["TI"] > 0) & (train["target_internacao"] == 0)].index
+treat_anomalous_train = train[
+    (train["TI"] > 0) & (train["target_internacao"] == 0)
+].index
 treat_anomalous_test = test[(test["TI"] > 0) & (test["target_internacao"] == 0)].index
 
 train.loc[treat_anomalous_train, "TI"] = 0
@@ -46,12 +51,12 @@ test.loc[treat_anomalous_test, "TI"] = 0
 X_train, y_train = train.drop(["target_internacao", "TI"], axis=1), train["TI"]
 X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["TI"]
 
-steps = [
-    ("input_values", SoftImputeDf()),
-    ("model_xgb", xgb.XGBRegressor())
-]
+steps = [("input_values", SoftImputeDf()), ("model_xgb", xgb.XGBRegressor())]
 
-grid = {"model_xgb__n_estimators": [30, 40, 50, 100], "model_xgb__max_depth": [3, 4, 5, 6]}
+grid = {
+    "model_xgb__n_estimators": [30, 40, 50, 100],
+    "model_xgb__max_depth": [3, 4, 5, 6],
+}
 
 pipeline = Pipeline(steps)
 model = GridSearchCV(pipeline, grid, cv=5, n_jobs=-1, verbose=2).fit(X_train, y_train)
@@ -75,8 +80,8 @@ table.loc["MAE", "Model"] = round(mae, 2)
 table.loc["RMSE", "Baseline"] = round(math.sqrt(mse_baseline), 2)
 table.loc["MAE", "Baseline"] = round(mae_baseline, 2)
 
-table.loc["RMSE", "Improvement (%)"] = round((1 - (mse/mse_baseline)) * 100, 2)
-table.loc["MAE", "Improvement (%)"] = round((1 - (mae/mae_baseline)) * 100, 2)
+table.loc["RMSE", "Improvement (%)"] = round((1 - (mse / mse_baseline)) * 100, 2)
+table.loc["MAE", "Improvement (%)"] = round((1 - (mae / mae_baseline)) * 100, 2)
 
 table.loc["Spearman", "Model"] = round(spearman.correlation, 2)
 table.loc["Kendall", "Model"] = round(kendall.correlation, 2)

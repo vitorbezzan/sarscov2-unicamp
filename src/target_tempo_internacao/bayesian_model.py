@@ -25,7 +25,9 @@ train, test = train_test_split(data, test_size=0.15, random_state=123)
 train = train[pd.notna(train["TI"])]
 test = test[pd.notna(test["TI"])]
 
-treat_anomalous_train = train[(train["TI"] > 0) & (train["target_internacao"] == 0)].index
+treat_anomalous_train = train[
+    (train["TI"] > 0) & (train["target_internacao"] == 0)
+].index
 treat_anomalous_test = test[(test["TI"] > 0) & (test["target_internacao"] == 0)].index
 
 train.loc[treat_anomalous_train, "TI"] = 0
@@ -34,9 +36,7 @@ test.loc[treat_anomalous_test, "TI"] = 0
 X_train, y_train = train.drop(["target_internacao", "TI"], axis=1), train["TI"]
 X_test, y_test = test.drop(["target_internacao", "TI"], axis=1), test["TI"]
 
-steps = [
-    ("model_xgb", BayesianxgRegressor(trial_number=100))
-]
+steps = [("model_xgb", BayesianxgRegressor(trial_number=100))]
 
 pipeline = Pipeline(steps)
 model = pipeline.fit(X_train, y_train)
@@ -61,9 +61,9 @@ table.loc["RMSE", "Baseline"] = round(math.sqrt(mse_baseline), 2)
 table.loc["MAE", "Baseline"] = round(mae_baseline, 2)
 table.loc["R2", "Baseline"] = round(r2_baseline, 2)
 
-table.loc["RMSE", "Improvement (%)"] = round((1 - (mse/mse_baseline)) * 100, 2)
-table.loc["MAE", "Improvement (%)"] = round((1 - (mae/mae_baseline)) * 100, 2)
-table.loc["R2", "Improvement (%)"] = round((1 - (r2/r2_baseline)) * 100, 2)
+table.loc["RMSE", "Improvement (%)"] = round((1 - (mse / mse_baseline)) * 100, 2)
+table.loc["MAE", "Improvement (%)"] = round((1 - (mae / mae_baseline)) * 100, 2)
+table.loc["R2", "Improvement (%)"] = round((1 - (r2 / r2_baseline)) * 100, 2)
 
 string = table.to_latex()
 
