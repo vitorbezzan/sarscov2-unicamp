@@ -39,13 +39,14 @@ data = data[
     ]
 ].dropna()
 
-red_series = ["Hematocrit",
-        "Hemoglobin",
-        "Red blood Cells",
-        "Mean corpuscular hemoglobin concentration (MCHC)",
-        "Mean corpuscular hemoglobin (MCH)",
-        "Mean corpuscular volume (MCV)",
-        "Red blood cell distribution width (RDW)",
+red_series = [
+    "Hematocrit",
+    "Hemoglobin",
+    "Red blood Cells",
+    "Mean corpuscular hemoglobin concentration (MCHC)",
+    "Mean corpuscular hemoglobin (MCH)",
+    "Mean corpuscular volume (MCV)",
+    "Red blood cell distribution width (RDW)",
 ]
 
 data["target_covid_attention"] = data["target_covid"] * data["target_attention"]
@@ -62,8 +63,9 @@ N = 0
 for neighbor in neighbors:
     for spread in spreads:
         for epss in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5]:
-            model = umap.UMAP(n_neighbors=neighbor, spread=spread, min_dist=0.01,
-                              random_state=42).fit(X)
+            model = umap.UMAP(
+                n_neighbors=neighbor, spread=spread, min_dist=0.01, random_state=42
+            ).fit(X)
             transformed_data = model.transform(X)
             cluster = DBSCAN(eps=epss).fit(transformed_data)
 
@@ -72,13 +74,19 @@ for neighbor in neighbors:
                 results_table.loc[N, "Spread"] = spread
                 results_table.loc[N, "EPS"] = epss
                 results_table.loc[N, "Labels"] = np.max(cluster.labels_) + 1
-                results_table.loc[N, "Score"] = silhouette_score(X, cluster.labels_, metric='euclidean')
+                results_table.loc[N, "Score"] = silhouette_score(
+                    X, cluster.labels_, metric="euclidean"
+                )
             N += 1
 
 results_table.sort_values(by="Score", ascending=False, inplace=True)
 selected = results_table.iloc[0]
-model = umap.UMAP(n_neighbors=selected["Neighbors"], spread=selected["Spread"], min_dist=0.1,
-                  random_state=42).fit(X)
+model = umap.UMAP(
+    n_neighbors=selected["Neighbors"],
+    spread=selected["Spread"],
+    min_dist=0.1,
+    random_state=42,
+).fit(X)
 transformed_data = pd.DataFrame(model.transform(X), columns=["X", "Y"], index=X.index)
 cluster = DBSCAN(eps=selected["EPS"]).fit(transformed_data.values)
 transformed_data["Cluster"] = cluster.labels_
@@ -87,21 +95,33 @@ transformed_data = transformed_data[transformed_data["Cluster"] != -1]
 colors = data["target_covid"] * transformed_data["Cluster"]
 fig, (ax1, ax2) = plt.subplots(1, 2)
 sns.set(font="Arial")
-scatter = ax1.scatter(x=transformed_data["X"].values, y=transformed_data["Y"].values,
-                  c=transformed_data["Cluster"])
+scatter = ax1.scatter(
+    x=transformed_data["X"].values,
+    y=transformed_data["Y"].values,
+    c=transformed_data["Cluster"],
+)
 fig.colorbar(scatter, ticks=range(transformed_data["Cluster"].max() + 1))
 ax1.set_title("Cluster Positions")
 
-ax2.scatter(x=transformed_data[data["target_covid"] == 1]["X"].values, y=transformed_data[data["target_covid"] == 1]["Y"].values,
-                  c=transformed_data[data["target_covid"] == 1]["Cluster"])
+ax2.scatter(
+    x=transformed_data[data["target_covid"] == 1]["X"].values,
+    y=transformed_data[data["target_covid"] == 1]["Y"].values,
+    c=transformed_data[data["target_covid"] == 1]["Cluster"],
+)
 ax2.set_title("COVID-19 patients")
 plt.savefig("./results/einstein/cluster_covid.png")
 plt.close()
 
-transformed_data = transformed_data.merge(X, how="left", left_index=True, right_index=True).drop(columns=["X", "Y"])
+transformed_data = transformed_data.merge(
+    X, how="left", left_index=True, right_index=True
+).drop(columns=["X", "Y"])
 groupby = transformed_data.groupby(by="Cluster").mean()
-groupby["Covid-19 (%)"] = data["target_covid"].groupby(by=transformed_data["Cluster"]).mean()
-groupby["# Patients"] = data["target_covid"].groupby(by=transformed_data["Cluster"]).count()
+groupby["Covid-19 (%)"] = (
+    data["target_covid"].groupby(by=transformed_data["Cluster"]).mean()
+)
+groupby["# Patients"] = (
+    data["target_covid"].groupby(by=transformed_data["Cluster"]).count()
+)
 groupby.sort_values(by="Covid-19 (%)", ascending=False, inplace=True)
 
 with open("./results/tables/results_umap_covid_red.tbl", "w") as file:

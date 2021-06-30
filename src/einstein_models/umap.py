@@ -39,13 +39,14 @@ data = data[
     ]
 ].dropna()
 
-red_series = ["Hematocrit",
-        "Hemoglobin",
-        "Red blood Cells",
-        "Mean corpuscular hemoglobin concentration (MCHC)",
-        "Mean corpuscular hemoglobin (MCH)",
-        "Mean corpuscular volume (MCV)",
-        "Red blood cell distribution width (RDW)",
+red_series = [
+    "Hematocrit",
+    "Hemoglobin",
+    "Red blood Cells",
+    "Mean corpuscular hemoglobin concentration (MCHC)",
+    "Mean corpuscular hemoglobin (MCH)",
+    "Mean corpuscular volume (MCV)",
+    "Red blood cell distribution width (RDW)",
 ]
 
 data["target_covid_attention"] = data["target_covid"] * data["target_attention"]
@@ -64,8 +65,9 @@ N = 0
 for neighbor in neighbors:
     for spread in spreads:
         for epss in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5]:
-            model = umap.UMAP(n_neighbors=neighbor, spread=spread, min_dist=0.1,
-                              random_state=42).fit(X)
+            model = umap.UMAP(
+                n_neighbors=neighbor, spread=spread, min_dist=0.1, random_state=42
+            ).fit(X)
             transformed_data = model.transform(X)
             cluster = DBSCAN(eps=epss).fit(transformed_data)
 
@@ -74,13 +76,19 @@ for neighbor in neighbors:
                 results_table.loc[N, "Spread"] = spread
                 results_table.loc[N, "EPS"] = epss
                 results_table.loc[N, "Labels"] = np.max(cluster.labels_) + 1
-                results_table.loc[N, "Score"] = silhouette_score(X, cluster.labels_, metric='euclidean')
+                results_table.loc[N, "Score"] = silhouette_score(
+                    X, cluster.labels_, metric="euclidean"
+                )
             N += 1
 
 results_table.sort_values(by="Score", ascending=False, inplace=True)
 selected = results_table.iloc[0]
-model = umap.UMAP(n_neighbors=selected["Neighbors"], spread=selected["Spread"], min_dist=0.1,
-                  random_state=42).fit(X)
+model = umap.UMAP(
+    n_neighbors=selected["Neighbors"],
+    spread=selected["Spread"],
+    min_dist=0.1,
+    random_state=42,
+).fit(X)
 transformed_data = pd.DataFrame(model.transform(X), columns=["X", "Y"], index=X.index)
 cluster = DBSCAN(eps=selected["EPS"]).fit(transformed_data.values)
 transformed_data["Cluster"] = cluster.labels_
@@ -88,29 +96,47 @@ transformed_data["Cluster"] = cluster.labels_
 colors = colors
 fig, (ax1, ax2) = plt.subplots(1, 2)
 sns.set(font="Arial")
-scatter = ax1.scatter(x=transformed_data["X"].values, y=transformed_data["Y"].values,
-                  c=["b" if value == 1 else "r" for value in transformed_data["Cluster"]])
+scatter = ax1.scatter(
+    x=transformed_data["X"].values,
+    y=transformed_data["Y"].values,
+    c=["b" if value == 1 else "r" for value in transformed_data["Cluster"]],
+)
 ax1.set_title("Cluster Positions")
 
-ax2.scatter(x=transformed_data["X"].values, y=transformed_data["Y"].values,
-                  c=["black" if value == 1 else "none" for value in colors])
+ax2.scatter(
+    x=transformed_data["X"].values,
+    y=transformed_data["Y"].values,
+    c=["black" if value == 1 else "none" for value in colors],
+)
 ax2.set_title("Special Care")
 plt.savefig("./results/einstein/cluster_attention.png")
 plt.close()
 
-transformed_data = transformed_data.merge(X, how="left", left_index=True, right_index=True).drop(columns=["X", "Y"])
+transformed_data = transformed_data.merge(
+    X, how="left", left_index=True, right_index=True
+).drop(columns=["X", "Y"])
 groupby = transformed_data.groupby(by="Cluster").mean()
-groupby.loc[:, "Special Care"] = data[data["target_covid"] == 1]["target_covid_attention"].groupby(by=transformed_data["Cluster"]).mean()
-groupby["# Patients"] = data["target_covid"].groupby(by=transformed_data["Cluster"]).count()
+groupby.loc[:, "Special Care"] = (
+    data[data["target_covid"] == 1]["target_covid_attention"]
+    .groupby(by=transformed_data["Cluster"])
+    .mean()
+)
+groupby["# Patients"] = (
+    data["target_covid"].groupby(by=transformed_data["Cluster"]).count()
+)
 groupby.loc["t-test", :] = np.nan
 
 for column in groupby.columns:
-    groupby.loc["t-test", column] = ttest_ind(transformed_data[transformed_data["Cluster"] == 0][column].values,
-                                              transformed_data[transformed_data["Cluster"] == 1][column].values,
-                                              alternative="greater")[1]
-    groupby.loc["ks-test", column] = kstest(transformed_data[transformed_data["Cluster"] == 0][column].values,
-                                           transformed_data[transformed_data["Cluster"] == 1][column].values,
-                                           alternative="less")[1]
+    groupby.loc["t-test", column] = ttest_ind(
+        transformed_data[transformed_data["Cluster"] == 0][column].values,
+        transformed_data[transformed_data["Cluster"] == 1][column].values,
+        alternative="greater",
+    )[1]
+    groupby.loc["ks-test", column] = kstest(
+        transformed_data[transformed_data["Cluster"] == 0][column].values,
+        transformed_data[transformed_data["Cluster"] == 1][column].values,
+        alternative="less",
+    )[1]
 
 
 with open("./results/tables/results_umap_attention_red.tbl", "w") as file:
